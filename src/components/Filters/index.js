@@ -1,57 +1,19 @@
 import './index.css'
+import EventEmitter from 'events'
 
-const employmentTypesList = [
-  {
-    label: 'Full Time',
-    employmentTypeId: 'FULLTIME',
-  },
-  {
-    label: 'Part Time',
-    employmentTypeId: 'PARTTIME',
-  },
-  {
-    label: 'Freelance',
-    employmentTypeId: 'FREELANCE',
-  },
-  {
-    label: 'Internship',
-    employmentTypeId: 'INTERNSHIP',
-  },
-]
-
-const salaryRangesList = [
-  {
-    salaryRangeId: '1000000',
-    label: '10 LPA and above',
-  },
-  {
-    salaryRangeId: '2000000',
-    label: '20 LPA and above',
-  },
-  {
-    salaryRangeId: '3000000',
-    label: '30 LPA and above',
-  },
-  {
-    salaryRangeId: '4000000',
-    label: '40 LPA and above',
-  },
-]
-
-const Filters = () => {
-  const arr = []
+const Filters = props => {
+  const {
+    employmentTypesList,
+    salaryRangesList,
+    changeSalary,
+    changeType,
+  } = props
   const typeChanged = event => {
-    if (event.target.checked) {
-      arr.push(event.target.value)
-    } else {
-      const ind = arr.indexOf(event.target.value)
-      arr.splice(ind, 1)
-    }
-    console.log(arr.join(','))
+    changeType(event.target.value, event.target.checked)
   }
 
   const salaryChanged = event => {
-    console.log(event.target.value)
+    changeSalary(event.target.value)
   }
 
   return (
