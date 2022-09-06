@@ -1,13 +1,13 @@
 import './index.css'
+import {Link} from 'react-router-dom'
 import Header from '../Header/index'
-import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
 
-const Home = () => {
-  const jwt_token = Cookies.get('jwt_token')
-  if (jwt_token !== undefined) {
-    return <Redirect to="/" />
+const Home = props => {
+  const findJobs = () => {
+    const {history} = props
+    history.push('/jobs')
   }
+
   return (
     <div className="home-container">
       <Header />
@@ -20,7 +20,7 @@ const Home = () => {
             Millions of people are searching for jobs,salary information,company
             reviews.Find the job that fir your abilities and potential.
           </p>
-          <button type="button" className="find-btn">
+          <button type="button" className="find-btn" onClick={findJobs}>
             Find Jobs
           </button>
         </div>
@@ -28,4 +28,5 @@ const Home = () => {
     </div>
   )
 }
+
 export default Home

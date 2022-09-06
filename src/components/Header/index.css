@@ -9,6 +9,15 @@
   padding-right: 30px;
   width: 100%;
 }
+.logout-icon-btn {
+  background-color: transparent;
+  border: none;
+}
+
+#link {
+  text-decoration: none;
+  color: white;
+}
 .header-website-logo {
   height: 25px;
 }
@@ -63,6 +72,7 @@
     font-family: 'Roboto';
     color: white;
     margin-right: 20px;
+    text-decoration: none;
   }
   .logout-btn {
     display: inline;

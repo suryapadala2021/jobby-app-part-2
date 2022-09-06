@@ -2,8 +2,8 @@ import './App.css'
 import {Switch, Route} from 'react-router-dom'
 import Login from './components/Login'
 import Home from './components/Home'
+import ProtectedRouter from './components/ProtectedRoute'
 import JobRoute from './components/JobRoute'
-import ProtetedRoute from './components/ProtectedRoute'
 
 const employmentTypesList = [
   {
@@ -46,7 +46,9 @@ const salaryRangesList = [
 // Replace your code here
 const App = () => (
   <Switch>
-    <Route path="/" component={Home} />
+    <Route exact path="/login" component={Login} />
+    <ProtectedRouter exact path="/" component={Home} />
+    <ProtectedRouter exact path="/jobs" component={JobRoute} />
   </Switch>
 )
 
