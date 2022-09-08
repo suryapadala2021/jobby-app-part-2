@@ -1,5 +1,4 @@
 import './index.css'
-import EventEmitter from 'events'
 
 const Filters = props => {
   const {
