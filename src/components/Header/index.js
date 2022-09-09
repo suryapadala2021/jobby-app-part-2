@@ -28,7 +28,7 @@ const Header = props => {
           </Link>
         </p>
         <p className="nav-item-lg">
-          <Link to="/Jobs" id="link">
+          <Link to="/jobs" id="link">
             Jobs
           </Link>
         </p>
@@ -44,7 +44,7 @@ const Header = props => {
             </Link>
           </li>
           <li>
-            <Link to="/Jobs">
+            <Link to="/jobs">
               <GiSuitcase className="jobs-icon" />
             </Link>
           </li>

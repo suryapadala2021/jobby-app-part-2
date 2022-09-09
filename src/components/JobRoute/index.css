@@ -16,7 +16,7 @@
   color: white;
   padding: 5px;
 }
-.search-box {
+.search-box-sm {
   margin-bottom: 25px;
   display: flex;
   justify-content: flex-start;
@@ -40,4 +40,66 @@
 .jobs-list {
   list-style-type: none;
   padding-left: 0;
+}
+.search-box-lg {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .search-box-sm {
+    display: none;
+  }
+  .job-router-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .profile-filter-bx-lg {
+    width: 30%;
+    flex-shrink: 0;
+    padding: 20px;
+    max-width: 300px;
+  }
+  .search-box-lg {
+    display: block;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cbd5e1;
+    border-radius: 5px;
+    width: 350px;
+  }
+  .search-jobs-container-lg {
+    flex-grow: 1;
+    padding: 30px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .profile-filter-bx-lg {
+    max-width: 400px;
+    display: block;
+  }
+}
+.failure-image {
+  width: 100%;
+  max-width: 400px;
+}
+.failure-view {
+  margin-top: 30px;
+  text-align: center;
+}
+.failure-heading {
+  font-family: 'Roboto';
+  color: white;
+  font-size: 16px;
+}
+.failure-desciption {
+  font-family: 'Roboto';
+  color: #cbd5e1;
+}
+.retry-btn-box {
+  text-align: center;
 }

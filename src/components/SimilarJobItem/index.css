@@ -1,0 +1,25 @@
+.similar-job-item {
+  background-color: #121212;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.sim-job-title {
+  font-family: 'Roboto';
+  color: white;
+  font-size: 12px;
+  padding-top: 0px;
+  margin-top: 12px;
+}
+.sim-job-description-heading {
+  font-family: 'Roboto';
+  color: white;
+  font-size: 18px;
+}
+@media screen and (min-width: 768px) {
+  .similar-job-item {
+    width: 250px;
+    margin: 20px;
+  }
+}
