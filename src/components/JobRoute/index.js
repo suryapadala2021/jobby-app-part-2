@@ -156,7 +156,7 @@ class JobRoute extends Component {
   }
 
   loadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="ThreeDots" color=" #4f46e5" height="50" width="50" />
     </div>
   )
@@ -205,7 +205,7 @@ class JobRoute extends Component {
               type="search"
               className="input-element"
             />
-            <button type="button" onClick={this.onSearch}>
+            <button type="button" onClick={this.onSearch} testid="searchButton">
               <BsSearch className="search-icon" />
             </button>
           </div>
@@ -228,7 +228,11 @@ class JobRoute extends Component {
                 type="search"
                 className="input-element"
               />
-              <button type="button" onClick={this.onSearch}>
+              <button
+                type="button"
+                onClick={this.onSearch}
+                testid="searchButton"
+              >
                 <BsSearch className="search-icon" />
               </button>
             </div>

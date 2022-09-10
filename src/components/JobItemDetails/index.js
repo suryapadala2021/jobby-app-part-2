@@ -21,6 +21,10 @@ class JobItemDetails extends Component {
     this.getJob()
   }
 
+  resetJobDetails = () => {
+    this.getJob()
+  }
+
   getJob = async () => {
     const jwt = Cookies.get('jwt_token')
 
@@ -76,8 +80,28 @@ class JobItemDetails extends Component {
   }
 
   loadingView = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="ThreeDots" color="#121212" height="50" width="50" />
+    </div>
+  )
+
+  failureView = () => (
+    <div className="failure-view">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+      />
+      <h1 className="failure-heading">Oops! Something Went Wrong</h1>
+      <p className="failure-desciption">
+        We cannot seem to find the page you are looking for
+      </p>
+      <button
+        type="button"
+        className="retry-btn"
+        onClick={this.resetJobDetails}
+      >
+        Retry
+      </button>
     </div>
   )
 
@@ -99,62 +123,68 @@ class JobItemDetails extends Component {
     console.log(similarJobs)
     return (
       <>
-        <div className="specific-job-box">
-          <div className="speicific-job-header">
+        <div className="specific-job-detail-container">
+          <div className="specific-job-header">
             <img
-              className="specfic-job-company-logo"
+              className="specific-job-company-logo"
               src={companyLogoUrl}
               alt="job details company logo"
             />
             <div>
-              <h1 className="specific-job-title">{title}</h1>
-              <div className="rating-container">
-                <AiFillStar className="star-icon" />
-                <p className="specific-raitng">{rating}</p>
+              <h1 className="specific-job-detail-title">{title}</h1>
+              <div className="details-rating-container">
+                <AiFillStar className="specific-star-icon" />
+                <p className="specific-rating">{rating}</p>
               </div>
             </div>
           </div>
-          <div className="job-info-container">
-            <div className="job-details-box">
-              <div className="rating-container">
+          <div className="specific-job-info-container">
+            <div className="specific-job-location-type-box">
+              <div className="details-location-container">
                 <GoLocation className="job-details-location-icon" />
-                <p className="specific-raitng">{location}</p>
+                <p className="specific-location-details">{location}</p>
               </div>
-              <div className="rating-container">
+              <div className="details-location-container">
                 <MdWork className="job-details-location-icon" />
-                <p className="specific-raitng">{employmentType}</p>
+                <p className="specific-location-details">{employmentType}</p>
               </div>
             </div>
             <p className="job-details-package">{packagePerAnnum}</p>
           </div>
           <hr />
-          <div className="description-container">
-            <h1 className="job-description-heading">Description</h1>
+          <div className="job-details-description-container">
+            <h1 className="specific-job-description-heading">Description</h1>
             <a href={companyWebsiteUrl}>
-              <div className="compnay-link-box">
+              <div className="company-link-box">
                 <p className="visit-link-text">Visit</p>
                 <BiLinkExternal className="link-icon" />
               </div>
             </a>
           </div>
           <p className="specific-job-description">{jobDescription}</p>
-          <h1 className="skill-set-heading">Skills</h1>
-          <ul className="skills-set">
-            {skills.map(each => (
-              <li key={each.name} className="skill">
-                <img
-                  className="skill-img"
-                  src={each.imageUrl}
-                  alt={each.name}
-                />
-                <p className="skill-name">{each.name}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="skills-section">
+            <h1 className="specific-job-description-heading">Skills</h1>
+            <ul className="skills-set">
+              {skills.map(each => (
+                <li key={each.name} className="skill">
+                  <img
+                    className="skill-img"
+                    src={each.imageUrl}
+                    alt={each.name}
+                  />
+                  <p className="skill-name">{each.name}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="life-at-container">
             <div className="life-at-text-container">
-              <h1 className="skill-set-heading">Life at Company</h1>
-              <p className="life-at-description">{lifeAtCompany.description}</p>
+              <h1 className="specific-job-description-heading">
+                Life at Company
+              </h1>
+              <p className="specific-job-description">
+                {lifeAtCompany.description}
+              </p>
             </div>
             <img
               src={lifeAtCompany.imageUrl}
@@ -164,6 +194,7 @@ class JobItemDetails extends Component {
           </div>
         </div>
         <div className="similar-jobs-container">
+          <h1 className="similar-jobs-heading">Similar Jobs</h1>
           <ul className="similar-jobs-list">
             {similarJobs.map(each => (
               <SimilarJobItem key={each.id} details={each} />
